@@ -3,9 +3,11 @@ const app = express();
 
 //estuou dizendo para o ejs express usar o EJS como view engine
 app.set('view engine', 'ejs');
+app.use(express.static('public')); // carrega qualquer arquivos estaticos como: css, imagens, etc
 
 app.get("/",(req,res) =>{
-    res.render("home");
+    res.render("index")
+
 });
 
 
