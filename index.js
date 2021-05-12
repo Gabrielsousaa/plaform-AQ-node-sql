@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser"); //responsavel por traduzir os dados enviados
 const connection = require("./database/database");
+const perguntaModel = require("./database/Pergunta");
 //DATABASE
 connection
     .authenticate()
