@@ -15,7 +15,10 @@ app.get("/perguntar", (req, res) => {
 
 });
 
+app.post("/salvarpergunta", (req, res) => {
+    res.send("formulario recebido");
 
+});
 
 app.listen(8080, () => {
 

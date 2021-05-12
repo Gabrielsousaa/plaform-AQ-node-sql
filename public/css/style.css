@@ -1,14 +1,11 @@
-body{
-
+body {
     background-color: bisque;
 }
 
-.bg{
-    background-image: url("/img/node.jpg");
-
+.bg {
+    background-image: url("/img/background.jpg");
 }
 
-#fomulario-pergunta{
+#fomulario-pergunta {
     margin-top: 5vh;
-
 }
