@@ -1,10 +1,16 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser"); //responsavel por traduzir os dados enviados
 
 //estuou dizendo para o ejs express usar o EJS como view engine
 app.set('view engine', 'ejs');
 app.use(express.static('public')); // carrega qualquer arquivos estaticos como: css, imagens, etc
 
+//BODY-PARSER
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+//ROTAS
 app.get("/", (req, res) => {
     res.render("index")
 
@@ -16,7 +22,9 @@ app.get("/perguntar", (req, res) => {
 });
 
 app.post("/salvarpergunta", (req, res) => {
-    res.send("formulario recebido");
+    var titulo = req.body.titulo;
+    var descricao = req.body.descricao;
+    res.send("formulario recebido! titulo: " + titulo + " " + " descricao " + descricao);
 
 });
 
