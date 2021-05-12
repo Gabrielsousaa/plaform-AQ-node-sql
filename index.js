@@ -5,19 +5,19 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public')); // carrega qualquer arquivos estaticos como: css, imagens, etc
 
-app.get("/",(req,res) =>{
+app.get("/", (req, res) => {
     res.render("index")
 
 });
 
-app.get("/perguntar",(req,res) =>{
+app.get("/perguntar", (req, res) => {
     res.render("perguntar")
 
 });
 
 
 
-app.listen(8080,()=>{
+app.listen(8080, () => {
 
     console.log("App rodando");
 
