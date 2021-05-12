@@ -2,3 +2,13 @@ body{
 
     background-color: bisque;
 }
+
+.bg{
+    background-image: url("/img/node.jpg");
+
+}
+
+#fomulario-pergunta{
+    margin-top: 5vh;
+
+}

@@ -11,23 +11,30 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
+<body class = "bg">
+
+<nav class="navbar navbar-light bg-dark">
+    <a class= "navbar-brand" href="/">
+        <img src="/img/icon.png" alt="">
+    </a>    
+</nav>
+
 <div class="container">
-    <div class="card">
+    <div class="card" id="fomulario-pergunta">
         <div class="card-header">       
             <h3>Realizar pergunta</h3>
         </div>
         <div class="card-body">
-        <form action="">
-           <label for=""> Titulo</label>
-              <input type="text" placeholder="Titulo" class="form-control">
-                 <br>
-              <label for=""> Descrição</label>
-              <textarea placeholder="Descreva sua pergunta" class="form-control"></textarea>
-                 <br>
-              <button class = "btn btn-primary" type="submit">perguntar</button>
-        </form>
-
+         <form>
+           <label> Titulo</label>
+            <input type="text" placeholder="Titulo" class="form-control">
+                <br>
+            <label> Descrição</label>
+                <textarea placeholder="Descreva sua pergunta" class="form-control"></textarea>
+                    <br>
+                        <button class = "btn btn-success" type="submit">perguntar</button>
+         
+            </form>
         </div>
     </div>
 </div>
