@@ -1,6 +1,17 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser"); //responsavel por traduzir os dados enviados
+const connection = require("./database/database");
+//DATABASE
+connection
+    .authenticate()
+    .then(() => {
+        console.log("conexão feita com o banco");
+    })
+    .catch((msgErro) => {
+        console.log(msgErro);
+    });
+
 
 //estuou dizendo para o ejs express usar o EJS como view engine
 app.set('view engine', 'ejs');
