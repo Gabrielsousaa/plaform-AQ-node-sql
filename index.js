@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser"); //responsavel por traduzir os dados enviados
 const connection = require("./database/database");
-const perguntaModel = require("./database/Pergunta");
+const Pergunta = require("./database/Pergunta"); // Pergunta é o do database que é model correto
 //DATABASE
 connection
     .authenticate()
@@ -14,7 +14,7 @@ connection
     });
 
 
-//estuou dizendo para o ejs express usar o EJS como view engine
+//Estou dizendo para o ejs express usar o EJS como view engine
 app.set('view engine', 'ejs');
 app.use(express.static('public')); // carrega qualquer arquivos estaticos como: css, imagens, etc
 
@@ -24,11 +24,13 @@ app.use(bodyParser.json());
 
 //ROTAS
 app.get("/", (req, res) => {
-    Pergunta.findAll({ raw: true }).then(perguntas => {
+    Pergunta.findAll({ raw: true }).then(perguntas => { //findAll-> Equivalente ao select from table
+        console.log(perguntas);
         res.render("index", {
             perguntas: perguntas
         });
     });
+
 });
 
 app.get("/perguntar", (req, res) => {
@@ -39,8 +41,12 @@ app.get("/perguntar", (req, res) => {
 app.post("/salvarpergunta", (req, res) => {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
-    res.send("formulario recebido! titulo: " + titulo + " " + " descricao " + descricao);
-
+    Pergunta.create({
+        titulo: titulo,
+        descricao: descricao
+    }).then(() => {
+        res.redirect("/");
+    });
 });
 
 app.listen(8080, () => {
