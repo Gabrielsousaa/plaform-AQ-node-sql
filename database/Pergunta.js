@@ -16,6 +16,4 @@ Pergunta.sync({ force: false }).then(() => {
     console.log("Tabela criada!");
 
 
-}); // nao irá forçar a criação da tabela caso ela exista  
-
-module.exports = Pergunta;
+}); // nao irá forçar a criação da tabela caso ela exista

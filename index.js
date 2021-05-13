@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser"); //responsavel por traduzir os dados enviados
 const connection = require("./database/database");
-const Pergunta = require("./database/Pergunta");
+const perguntaModel = require("./database/Pergunta");
 //DATABASE
 connection
     .authenticate()
@@ -11,7 +11,7 @@ connection
     })
     .catch((msgErro) => {
         console.log(msgErro);
-    })
+    });
 
 
 //estuou dizendo para o ejs express usar o EJS como view engine
@@ -24,8 +24,11 @@ app.use(bodyParser.json());
 
 //ROTAS
 app.get("/", (req, res) => {
-    res.render("index")
-
+    Pergunta.findAll({ raw: true }).then(perguntas => {
+        res.render("index", {
+            perguntas: perguntas
+        });
+    });
 });
 
 app.get("/perguntar", (req, res) => {
@@ -36,14 +39,7 @@ app.get("/perguntar", (req, res) => {
 app.post("/salvarpergunta", (req, res) => {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
-
-    Pergunta.create({
-        titulo: titulo,
-        descricao: descricao
-    }).then(() => {
-        res.redirect("/");
-
-    });
+    res.send("formulario recebido! titulo: " + titulo + " " + " descricao " + descricao);
 
 });
 
