@@ -24,7 +24,12 @@ app.use(bodyParser.json());
 
 //ROTAS
 app.get("/", (req, res) => {
-    Pergunta.findAll({ raw: true }).then(perguntas => { //findAll-> Equivalente ao select from table
+    Pergunta.findAll({
+        raw: true,
+        order: [
+            ['createdAt', 'DESC'] //asc = crescente || DES = descrescente
+        ]
+    }).then(perguntas => { //findAll-> Equivalente ao select from table
         console.log(perguntas);
         res.render("index", {
             perguntas: perguntas
@@ -47,6 +52,20 @@ app.post("/salvarpergunta", (req, res) => {
     }).then(() => {
         res.redirect("/");
     });
+});
+
+app.get("/pergunta/:id", (req, res) => {
+    var id = req.params.id;
+    Pergunta.findOne({
+        where: { id: id }
+    }).then(pergunta => { //then basicamente é uma função de resposta da pesquisa findOne ou qualquer find
+        if (pergunta != undefined) { //pergunta encotrada
+            res.render("pergunta");
+        } else { // nao encontrada
+            res.redirect("/");
+        }
+    });
+
 });
 
 app.listen(8080, () => {
