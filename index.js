@@ -60,7 +60,10 @@ app.get("/pergunta/:id", (req, res) => {
         where: { id: id }
     }).then(pergunta => { //then basicamente é uma função de resposta da pesquisa findOne ou qualquer find
         if (pergunta != undefined) { //pergunta encotrada
-            res.render("pergunta");
+            res.render("pergunta", {
+                pergunta: pergunta
+
+            });
         } else { // nao encontrada
             res.redirect("/");
         }

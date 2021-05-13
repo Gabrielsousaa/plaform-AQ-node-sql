@@ -1,1 +1,24 @@
-<h1>PAGINA DA PERGUNTA</h1>
+<%- include('partials/header.ejs')-%>
+
+    <body class="bg">
+        <%- include('partials/navbar.ejs')-%>
+            <div class="container">
+                <hr>
+                <div class="card">
+                    <div class="card-body">
+
+                        <h1>
+                            <%= pergunta.titulo %>
+                        </h1>
+                        <br>
+                        <p>
+                            <%= pergunta.descricao %>
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+    </body>
+
+    <%- include('partials/footer.ejs')-%>
