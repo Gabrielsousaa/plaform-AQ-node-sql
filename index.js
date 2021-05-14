@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require("body-parser"); //responsavel por traduzir os dados enviados
 const connection = require("./database/database");
 const Pergunta = require("./database/Pergunta"); // Pergunta é o do database que é model correto
+const Resposta = require("./database/Resposta");
+
 //DATABASE
 connection
     .authenticate()
