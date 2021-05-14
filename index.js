@@ -4,7 +4,6 @@ const bodyParser = require("body-parser"); //responsavel por traduzir os dados e
 const connection = require("./database/database");
 const Pergunta = require("./database/Pergunta"); // Pergunta é o do database que é model correto
 const Resposta = require("./database/Resposta");
-
 //DATABASE
 connection
     .authenticate()
@@ -73,6 +72,16 @@ app.get("/pergunta/:id", (req, res) => {
 
 });
 
+app.post("/responder", (req, res) => {
+    var corpo = req.body.corpo;
+    var perguntaId = req.body.pergunta;
+    Resposta.create({
+        corpo: corpo,
+        perguntaId: perguntaId
+    }).then(() => {
+        res.redirect("/pergunta/" + perguntaId);
+    });
+});
 app.listen(8080, () => {
 
     console.log("App rodando");
